@@ -1,0 +1,47 @@
+/* src/styles.css */
+
+/* 1. Use a more modern reset for all elements */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font: inherit; /* Prevents buttons/inputs from using weird system fonts */
+}
+
+/* 2. Remove default list and link styles (for your Catalog/List components) */
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* 3. Improve media behavior */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 4. Remove default button styling for a truly minimalist look */
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: inherit;
+}
+
+/* 5. Set up your preferred technical typography */
+html,
+body {
+  height: 100%;
+  -webkit-font-smoothing: antialiased; /* Makes Inter/Montserrat look crisper */
+}

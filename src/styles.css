@@ -1,1 +1,64 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Inter:wght@400;700&display=swap');
+@import url('./styles/normalize.css');
+@import url('./styles/button.css');
+@import url('./styles/navigation.css');
+
+:root {
+  --primary-font: 'Inter', sans-serif;
+  --heading-font: 'Montserrat', sans-serif;
+  --page-bg: rgba(17, 37, 22, 0.9);
+  --card-bg: rgba(17, 37, 22, 1);
+  --card-border-color: rgba(2, 34, 10, 0.76);
+  --card-border-shadow-color: rgb(8, 35, 15);
+  --color-foreground: rgb(220, 209, 209);
+  --header-width: 1800px;
+  --content-width: 1600px;
+}
+
+body,
+main,
+header,
+footer,
+app-root {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  width: 100%;
+}
+
+app-root {
+  min-height: 100vh;
+  background-color: var(--page-bg);
+  color: var(--color-foreground);
+  font-family: var(--primary-font);
+}
+
+main {
+  width: 100%;
+  max-width: var(--content-width);
+  padding: 0 2rem;
+  gap: 1rem;
+}
+
+header,
+footer {
+  width: 100%;
+  background-color: var(--card-bg);
+  padding: 0 2rem;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom: 2px solid var(--card-border-color);
+  margin-bottom: 0.5rem;
+  box-shadow: 0 2px 6px var(--card-border-shadow-color);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--heading-font);
+}

@@ -4,6 +4,7 @@ import tseslint from 'typescript-eslint';
 import angular from 'angular-eslint';
 import unicorn from 'eslint-plugin-unicorn';
 import prettier from 'eslint-plugin-prettier/recommended';
+import prettierConfig from 'eslint-config-prettier';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 
 const eslintConfig = defineConfig([
@@ -12,6 +13,7 @@ const eslintConfig = defineConfig([
   ...tseslint.configs.stylistic,
   ...angular.configs.tsRecommended,
   unicorn.configs['recommended'],
+  prettierConfig,
 
   {
     files: ['**/*.ts'],
@@ -22,7 +24,6 @@ const eslintConfig = defineConfig([
     rules: {
       'simple-import-sort/imports': 'error',
       'simple-import-sort/exports': 'error',
-
       '@angular-eslint/directive-selector': [
         'error',
         { type: 'attribute', prefix: 'app', style: 'camelCase' },
@@ -37,13 +38,17 @@ const eslintConfig = defineConfig([
     },
   },
 
-  {
+  ...angular.configs.templateRecommended.map((config) => ({
+    ...config,
     files: ['**/*.html'],
-    extends: [...angular.configs.templateRecommended, ...angular.configs.templateAccessibility],
-    rules: {},
-  },
+  })),
+  ...angular.configs.templateAccessibility.map((config) => ({
+    ...config,
+    files: ['**/*.html'],
+  })),
   prettier,
-  globalIgnores(['out/**', 'build/**', 'node_modules/**']),
+
+  globalIgnores(['out/**', 'build/**', 'node_modules/**', '.angular/**', '.vscode/**']),
 ]);
 
 export default eslintConfig;

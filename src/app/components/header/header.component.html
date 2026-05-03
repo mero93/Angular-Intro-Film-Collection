@@ -1,0 +1,33 @@
+<div class="header-container">
+  <div class="logo">
+    <a routerLink="/films">
+      <h1>Film Collection</h1>
+    </a>
+  </div>
+
+  <div class="navigation-wrapper">
+    <button
+      class="btn btn-icon btn-stealth hamburger"
+      [class.active]="isMenuOpen()"
+      (click)="toggleMenu()"
+    >
+      <span class="material-symbols-outlined">
+        {{ isMenuOpen() ? 'close' : 'menu' }}
+      </span>
+    </button>
+
+    @if (isMenuOpen()) {
+      <nav class="navigation">
+        <ul>
+          @for (link of navLinks; track link.path) {
+            <li>
+              <a [routerLink]="link.path" routerLinkActive="active-link" (click)="toggleMenu()">
+                {{ link.label }}
+              </a>
+            </li>
+          }
+        </ul>
+      </nav>
+    }
+  </div>
+</div>

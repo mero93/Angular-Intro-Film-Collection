@@ -1,0 +1,31 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: var(--header-width);
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  background-color: var(--card-bg);
+  border-bottom: 1px solid var(--card-border-color);
+}
+
+.logo h1 {
+  font-family: var(--heading-font); /* Montserrat */
+  color: var(--color-foreground);
+  margin: 0;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Ensure the icon within the button inherits the foreground color */
+.hamburger .material-symbols-outlined {
+  font-size: 24px;
+  color: inherit;
+  display: block;
+}
