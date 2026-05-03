@@ -1,1 +1,1 @@
-npx lint-staged
+ng test && npx lint-staged
