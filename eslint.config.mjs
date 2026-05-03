@@ -16,7 +16,7 @@ const eslintConfig = defineConfig([
   prettierConfig,
 
   {
-    files: ['**/*.ts'],
+    files: ['/*.ts'],
     processor: angular.processInlineTemplates,
     plugins: {
       'simple-import-sort': simpleImportSort,
@@ -35,20 +35,21 @@ const eslintConfig = defineConfig([
       'unicorn/prevent-abbreviations': 'off',
       'unicorn/no-null': 'off',
       'unicorn/filename-case': ['error', { case: 'kebabCase' }],
+      'unicorn/consistent-function-scoping': 'off',
     },
   },
 
-  ...angular.configs.templateRecommended.map((config) => ({
-    ...config,
-    files: ['**/*.html'],
-  })),
-  ...angular.configs.templateAccessibility.map((config) => ({
-    ...config,
-    files: ['**/*.html'],
-  })),
+  {
+    files: ['/*.html'],
+    extends: [...angular.configs.templateRecommended, ...angular.configs.templateAccessibility],
+    rules: {
+      'prettier/prettier': ['error', { parser: 'angular' }],
+    },
+  },
+
   prettier,
 
-  globalIgnores(['out/**', 'build/**', 'node_modules/**', '.angular/**', '.vscode/**']),
+  globalIgnores(['out/', 'build/', 'node_modules/', '.angular/', '.vscode/']),
 ]);
 
 export default eslintConfig;

@@ -15,7 +15,7 @@
 }
 
 .logo h1 {
-  font-family: var(--heading-font); /* Montserrat */
+  font-family: var(--heading-font);
   color: var(--color-foreground);
   margin: 0;
   font-size: 1.5rem;
@@ -23,9 +23,18 @@
   letter-spacing: 0.1em;
 }
 
-/* Ensure the icon within the button inherits the foreground color */
 .hamburger .material-symbols-outlined {
   font-size: 24px;
   color: inherit;
   display: block;
+  z-index: 1010;
+}
+
+@media (max-width: 768px) {
+  .logo h1 {
+    font-size: 1rem;
+  }
+  .header-container {
+    padding: 1rem 0;
+  }
 }
