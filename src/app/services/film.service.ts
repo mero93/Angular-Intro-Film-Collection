@@ -48,6 +48,7 @@ export class FilmService {
   }
 
   public async toggleFavoriteStatus(id: number) {
+    console.log(this.filmsPrivate().length);
     if (this.filmsPrivate().length === 0) return;
 
     this.filmsPrivate.update((films) =>

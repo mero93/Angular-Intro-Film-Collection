@@ -1,1 +1,39 @@
-<p>film-details.component works!</p>
+<div class="details-container">
+  <button class="btn btn-standard btn-stealth" (click)="goBack()">
+    <span class="material-symbols-outlined">arrow_back</span>
+    Back to Catalog
+  </button>
+
+  @if (film) {
+    <div class="film-card-raised">
+      <div class="film-content">
+        <div class="poster-section">
+          <img [src]="film.posterUrl" [alt]="film.title" class="detail-poster" />
+        </div>
+
+        <div class="info-section">
+          <h1>{{ film.title }}</h1>
+          <div class="meta-tags">
+            <span class="tag">{{ film.year }}</span>
+            <span class="tag">{{ film.genre }}</span>
+            <span class="tag">⭐ {{ film.rating.toFixed(1) }}</span>
+            <span class="tag">{{ film.duration | duration }}</span>
+          </div>
+
+          <p class="description">{{ film.description }}</p>
+        </div>
+        <button
+          class="btn-favorite"
+          [class.is-favorite]="film.isFavorite"
+          (click)="onFavoriteClick()"
+          type="button"
+          aria-label="Toggle Favorite"
+        >
+          <span class="material-symbols-outlined">
+            {{ film.isFavorite ? 'favorite' : 'favorite_border' }}
+          </span>
+        </button>
+      </div>
+    </div>
+  }
+</div>
