@@ -1,1 +1,17 @@
-<p>breadcrumbs.component works!</p>
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <ol>
+    <li>
+      <span class="separator">/</span>
+    </li>
+    @for (crumb of breadcrumbs(); track crumb.url; let last = $last) {
+      <li>
+        @if (!last) {
+          <a [routerLink]="crumb.url">{{ crumb.label }}</a>
+          <span class="separator">/</span>
+        } @else {
+          <a [routerLink]="crumb.url">{{ crumb.label }}</a>
+        }
+      </li>
+    }
+  </ol>
+</nav>
