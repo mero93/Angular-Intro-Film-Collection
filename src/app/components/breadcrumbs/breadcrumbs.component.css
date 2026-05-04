@@ -1,11 +1,16 @@
 :host {
-  display: flex;
-  justify-content: center;
+  position: sticky;
+  top: calc(var(--header-height) + 1.5px);
+  display: block;
+  z-index: 1;
   width: 100%;
-  padding: 0 1rem;
+  max-width: var(--content-width);
+  padding: 0rem 1rem 0.5rem 1rem;
+  background-color: var(--page-bg);
 }
 
 .breadcrumbs {
+  z-index: 10;
   width: 100%;
   padding: 0.5rem;
   display: flex;

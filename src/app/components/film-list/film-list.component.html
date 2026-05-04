@@ -1,1 +1,23 @@
-<p>film-list.component works!</p>
+<div class="search-wrapper">
+  <input
+    type="text"
+    placeholder="Search films by title..."
+    [ngModel]="searchTerm"
+    (ngModelChange)="onSearchChange($event)"
+    appAutofocus
+    class="search-input"
+  />
+</div>
+
+@if (films().length > 0) {
+  <div class="films-grid">
+    @for (film of films(); track film.id) {
+      <app-film-card [film]="film" (toggleFavorite)="handleFavoriteToggle($event)" />
+    }
+  </div>
+} @else {
+  <div class="nothing-found">
+    <span class="material-symbols-outlined">search_off</span>
+    <p>Nothing found</p>
+  </div>
+}

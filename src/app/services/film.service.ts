@@ -30,7 +30,7 @@ export class FilmService {
   public async loadFilms() {
     if (this.filmsPrivate().length > 0) return;
 
-    const response = await fetch('assets/films.json');
+    const response = await fetch('./films.json');
     const data: Film[] = await response.json();
     this.filmsPrivate.set(data);
 

@@ -11,6 +11,7 @@ export const routes: Routes = [
     path: 'films',
     component: FilmListComponent,
     title: 'Film Catalog',
+    data: { breadcrumb: 'Home' },
   },
   {
     path: 'films/:id',

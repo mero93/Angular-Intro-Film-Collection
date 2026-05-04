@@ -1,1 +1,31 @@
-<p>film-card.component works!</p>
+<div class="card" [routerLink]="['/films', film().id]">
+  <div class="poster-wrapper">
+    <img [src]="film().posterUrl" [alt]="film().title" loading="lazy" />
+    <button
+      class="btn-favorite"
+      [class.is-favorite]="film().isFavorite"
+      (click)="onFavoriteClick($event)"
+      type="button"
+      aria-label="Toggle Favorite"
+    >
+      <span class="material-symbols-outlined">
+        {{ film().isFavorite ? 'favorite' : 'favorite_border' }}
+      </span>
+    </button>
+  </div>
+
+  <div class="card-content">
+    <div class="card-header">
+      <h3 class="film-title">{{ film().title }}</h3>
+      <span class="film-year">{{ film().year }}</span>
+    </div>
+
+    <div class="card-footer">
+      <span class="film-genre">{{ film().genre }}</span>
+      <div class="film-rating">
+        <span class="material-symbols-outlined">star</span>
+        <span>{{ film().rating.toFixed(1) }}</span>
+      </div>
+    </div>
+  </div>
+</div>

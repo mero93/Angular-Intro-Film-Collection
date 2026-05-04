@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import mockFilms from '../../assets/films.json';
+import mockFilms from '../../../public/films.json';
 import { FilmService } from './film.service';
 
 describe('FilmService', () => {

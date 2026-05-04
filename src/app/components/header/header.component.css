@@ -9,7 +9,8 @@
   align-items: center;
   max-width: var(--header-width);
   margin: 0 auto;
-  padding: 1rem 2rem;
+  padding: 0 2rem;
+  height: var(--header-height);
   background-color: var(--card-bg);
 }
 
