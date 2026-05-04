@@ -1,0 +1,46 @@
+.footer {
+  width: 100%;
+  padding: 1rem 0;
+  margin-top: auto;
+  border-top: 2px solid rgba(255, 255, 255, 0.15);
+  z-index: 50;
+}
+
+.footer-content {
+  max-width: var(--header-width);
+  padding: 0 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.9rem;
+}
+
+.github-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: inherit;
+  transition: color 0.2s ease;
+}
+
+.github-link:hover {
+  color: var(--color-foreground);
+}
+
+.github-link .material-symbols-outlined {
+  font-size: 20px;
+}
+
+.rs-school-logo {
+  width: 40px;
+}
+
+@media (max-width: 600px) {
+  .footer-content {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+}
