@@ -1,6 +1,6 @@
 import { effect, inject, Injectable, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { ActivatedRouteSnapshot, NavigationEnd, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
 
 export interface Breadcrumb {
@@ -29,19 +29,27 @@ export class BreadcrumbsService {
 
   private updateBreadcrumbs() {
     const breadcrumbs: Breadcrumb[] = [];
-    let currentRoute: ActivatedRouteSnapshot | null = this.router.routerState.snapshot.root;
+    let currentRoute: ActivatedRoute | null = this.router.routerState.root;
     let url = '';
 
     while (currentRoute) {
-      const path = currentRoute.url.map((segment) => segment.path).join('/');
+      const snapshot = currentRoute.snapshot;
+      const path = currentRoute.snapshot.url.map((segment) => segment.path).join('/');
       if (path) {
         url += `/${path}`;
       }
 
-      const label = currentRoute.data['breadcrumb'] ?? currentRoute.title;
+      const breadcrumbData = snapshot.data['breadcrumb'];
 
-      if (label && !breadcrumbs.some((b) => b.label === label)) {
-        breadcrumbs.push({ label, url: url || '/' });
+      const label =
+        typeof breadcrumbData === 'function'
+          ? breadcrumbData(snapshot.data)
+          : (breadcrumbData ?? snapshot.title);
+
+      const currentUrl = url || '/';
+
+      if (label && !breadcrumbs.some((b) => b.url === currentUrl)) {
+        breadcrumbs.push({ label, url: currentUrl });
       }
 
       currentRoute = currentRoute.firstChild;

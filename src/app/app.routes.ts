@@ -5,21 +5,28 @@ import { FilmDetailsComponent } from './components/film-details/film-details.com
 import { FilmListComponent } from './components/film-list/film-list.component';
 import { filmResolver } from './resolvers/film.resolver';
 import { NotFoundComponent } from './components/not-found.component/not-found.component';
+import { Film } from './types/film';
 
 export const routes: Routes = [
   {
     path: 'films',
-    component: FilmListComponent,
-    title: 'Film Catalog',
     data: { breadcrumb: 'Home' },
+    children: [
+      {
+        path: '',
+        component: FilmListComponent,
+        title: 'Film Catalog',
+      },
+      {
+        path: ':id',
+        component: FilmDetailsComponent,
+        title: 'Film Details',
+        resolve: { film: filmResolver },
+        data: { breadcrumb: (data: { film?: Film }) => data.film?.title ?? 'Film Details' },
+      },
+    ],
   },
-  {
-    path: 'films/:id',
-    component: FilmDetailsComponent,
-    title: 'Film Details',
-    data: { breadcrumb: 'film' },
-    resolve: { film: filmResolver },
-  },
+
   {
     path: 'about',
     component: AboutComponent,
