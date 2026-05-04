@@ -39,13 +39,16 @@ app-root {
   width: 100%;
 }
 
+body,
 app-root {
+  position: relative;
   min-height: 100vh;
+  height: fit-content;
+  flex: 1 0 auto;
 }
 
 main {
-  width: 100%;
-  height: 100%;
+  display: flex;
   max-width: var(--content-width);
   padding: 0 2rem;
   gap: 1rem;
