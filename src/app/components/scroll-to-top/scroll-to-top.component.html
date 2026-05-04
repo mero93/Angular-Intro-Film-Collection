@@ -1,0 +1,7 @@
+@if (mountButton()) {
+  <div class="scroll-container" [class.show]="showButton()">
+    <button class="scroll-btn" (click)="scrollToTop()" type="button">
+      <span class="material-symbols-outlined">arrow_upward</span>
+    </button>
+  </div>
+}
